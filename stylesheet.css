@@ -8,14 +8,37 @@ body {
     padding: 0;
     display: flex;
 }
+
+.profiles{
+    
+    list-style: none; /* Remove bullet points */
+}
+
+
+.profiles li {
+    border: 1px solid #ccc; /* Add border to each list item */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    margin-bottom: 5px; /* Add some space between list items */
+}
+
+
+.profiles li :hover{
+    border: 1px solid #ccc; /* Add border to each list item */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    margin-bottom: 5px; /* Add some space between list items */
+}
+
+
 .link a {
     text-decoration: none; /* Remove default underline */
     color: #0366d6; /* GitHub's link color */
     font-weight: bold; /* Make the link text bold */
+    
+
    
 }
-.link a:hover {
-    color:#0c2a4d; /* Add underline on hover */
+.link :hover {
+    border-color: #ccc; /* Change border color on hover */
 }
 
 
@@ -47,7 +70,7 @@ body {
 
 .container {
     max-width: 800px;
-    padding: 20px;
+    padding: 120px;
     margin-right: 20px;
     transition: margin-left 0.3s ease; /* Add transition for margin-left */
 
@@ -97,4 +120,9 @@ h1, h2, h3 {
     color: #000;
     font-size: 20px;
     cursor: pointer;
+}
+
+.logo{
+    width: 140px; /* Adjust width of sidebar */
+    height: 100px;
 }
