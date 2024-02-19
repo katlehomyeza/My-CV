@@ -4,43 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katleho Siyabonga Myeza - Resume</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .sidebar {
-            width: 200px;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            padding: 20px;
-            margin-right: 20px;
-        }
-        h1, h2, h3 {
-            margin-top: 0;
-        }
-    </style>
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    
 </head>
 <body>
+
+    <button class="menu-toggle" id="menu-toggle">Menu</button>
+
+
     <!-- Sidebar -->
-    <div class="sidebar">
+    <aside id = "sidebar" class="sidebar">
+        <button class="close-btn" id="close-btn">&times;</button>
+
         <h2>Katleho Myeza</h2>
         
         <ul>
-            <li><a href="#linkedin">LinkedIn</a></li>
-            <li><a href="#github">Github</a></li>
+            <li class="link"><i class="fas fa-suitcase"></i><a href="#linkedin">LinkedIn</a></li>
+            <li class="link"><a href="https://github.com/katlehomyeza">Github</a></li>
             
         </ul>
-    </div>
+    </aside>
 
     <!-- Main Content -->
-    <div class="container">
+    <main class="container">
         <h1>Curriculum Vitae</h1>
         <h2 id="personal-info">Personal Information:</h2>
         <ul>
@@ -119,6 +106,8 @@
                 </ul>
             </li>
         </ul>
-    </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
