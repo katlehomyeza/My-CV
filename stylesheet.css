@@ -48,9 +48,11 @@ body {
     left: -220px; /* Adjust width of sidebar */
     width: 200px; /* Adjust width of sidebar */
     height: 100%;
-    background-color: #f4f4f4;
+    background-color: rgb(245, 245, 245);
     padding: 20px;
     transition: left 0.3s ease;
+    overflow-y: auto; /* Allow sidebar to be scrollable if content exceeds height */
+
 }
 
 #sidebar ul i {
@@ -125,4 +127,16 @@ h1, h2, h3 {
 .logo{
     width: 140px; /* Adjust width of sidebar */
     height: 100px;
+}
+
+/* Styles for contact buttons */
+.contact-button {
+    display: block;
+    margin-top: auto; /* Push buttons to the bottom */
+    text-decoration: none;
+    color: #333;
+}
+
+.contact-button i {
+    margin-right: 5px;
 }
