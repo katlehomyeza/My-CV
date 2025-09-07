@@ -3,98 +3,471 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katleho Siyabonga Myeza - Resume</title>
-    
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-    
+    <title>Katleho Myeza - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
+    <canvas id="particleCanvas"></canvas>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h4>Katleho Myeza</h4>
-        <img class ="logo" src="C:\Users\user1\Downloads\mylogo.png">
-        
-        <ul class="profiles">
-            <li class="link"><i class="fas fa-suitcase"></i><a href="#linkedin">LinkedIn</a></li>
-            <li class="link"><i class="fas fa-suitcase"></i><a href="https://github.com/katlehomyeza">Github</a></li>
-        </ul>
+    <!-- Floating background elements -->
+    <div class="floating-bg">
+        <div class="bg-element bg-element-1"></div>
+        <div class="bg-element bg-element-2"></div>
+        <div class="bg-element bg-element-3"></div>
+        <div class="bg-element bg-element-4"></div>
+    </div>
 
-        <!-- WhatsApp button -->
-        <a href="https://wa.me/0662315719" target="_blank" class="contact-button whatsapp">
-            <i class="fab fa-whatsapp"></i>WhatsApp
-        </a>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="nav-logo">KM</div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                    <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+                    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-        <!-- Email button -->
-        <a href="mailto:ksjmyeza@gmail.com" class="contact-button email">
-            <i class="far fa-envelope"></i>Email
-        </a>
-    </aside>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left side - Text content -->
+                <div class="hero-text">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="text-foreground">Make</span>
+                            <span class="text-gradient">Code</span>
+                            <span class="text-foreground">That</span>
+                            <br>
+                            <span class="text-foreground">Engages, Delights,</span>
+                            <br>
+                            <span class="text-foreground">and</span>
+                            <span class="text-gradient">Connects</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Junior Software Engineer crafting innovative solutions with modern technologies. Passionate about
+                            building scalable systems that make a difference.
+                        </p>
+                    </div>
 
-    <!-- Main Content -->
-    <main class="container">
-        <h1>Curriculum Vitae</h1>
-        
-        <h2 id="personal-info">Personal Information:</h2>
-        <ul>
-            <li>Full Name: Katleho Siyabonga Myeza</li>
-            <li>Title: Junior Software Engineer</li>
-            <li>Location: Johannesburg, Gauteng</li>
-            <li>Contact Information: 066 231 5719 | ksjmyeza@gmail.com</li>
-        </ul>
+                    <div class="hero-location">
+                        <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>Johannesburg, Gauteng</span>
+                    </div>
 
-        <h2 id="objective">Professional Summary:</h2>
-        <p>I am a Computer Science graduate with hands-on experience as a Junior Software Engineer. I have worked in a team of developers on client projects while completing a graduate program, where I built strong technical and professional skills. I have experience designing and developing sustainable, scalable systems and I am a results-oriented, adaptable and collaborative team player. I thrive in learning quickly and applying my knowledge to solve real-world challenges effectively.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Get In Touch
+                        </button>
+                        <button class="btn btn-outline">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                            View Projects
+                        </button>
+                    </div>
 
-        <h2 id="education">Education:</h2>
-        <p><strong>University of Witwatersrand — Bachelor of Science in Computer Science</strong></p>
-        <p><strong>Key Coursework & Concepts:</strong></p>
-        <ul>
-            <li>Fundamental CS concepts: Machine Learning, Operating Systems, Algorithms & Complexity, Computer Networks, Automata & Turing Machines, Mathematics (Linear Algebra, Calculus, Statistics)</li>
-            <li>Software Design Principles & Theory</li>
-        </ul>
+                    <div class="hero-social">
+                        <a href="tel:0662315719" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </a>
+                        <a href="mailto:ksjmyeza@gmail.com" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
-        <h2 id="work-experience">Work Experience:</h2>
-        
-        <p><strong>Junior Software Engineer — BBD Software Technologies</strong></p>
-        <p><em>Jan 2025 – Present (Contract) | The Hive, Skills Department</em></p>
-        <ul>
-            <li>Worked in "The Hive", an in-house component of the ATC team developing a skills management platform for HR managers to assess employee competencies and assign them to client projects.</li>
-            <li>Successfully balanced graduate program coursework with contributing to client projects, gaining hands-on experience in real-world software development.</li>
-            <li>Studied and practiced full-stack development concepts, including Java, C#, Spring Boot, React, Tailwind CSS, ORMs and security practices such as mTLS, 2FA authentication and encryption with public/private keys through the graduate program.</li>
-            <li>Gained hands-on experience with AWS infrastructure, CI/CD pipelines, Docker, and Flyway migrations.</li>
-            <li>Collaborated in agile teams, delivering features, writing documentation, and presenting technical solutions to the graduate program panel.</li>
-            <li>Assisted with internal company events weekly, setting up equipment and ushering attendees and MC'ing sessions.</li>
-        </ul>
+                <!-- Right side - Image with floating elements -->
+                <div class="hero-image">
+                    <div class="image-container">
+                        <!-- Floating UI elements -->
+                        <div class="floating-element floating-element-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="16,18 22,12 16,6"></polyline>
+                                <polyline points="8,6 2,12 8,18"></polyline>
+                            </svg>
+                        </div>
+                        <div class="floating-element floating-element-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                        <div class="floating-element floating-element-3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                            </svg>
+                        </div>
+                        <div class="floating-element floating-element-4">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
 
-        <p><strong>Vacation Worker — Synthesis Software Technologies</strong></p>
-        <p><em>Dec 2023 – Jan 2024</em></p>
-        <ul>
-            <li>Built a social media e-commerce site with Flutter, Express.js, and MongoDB and presented it at the program's end.</li>
-        </ul>
+                        <!-- Main profile image -->
+                        <div class="profile-image-wrapper">
+                            <div class="profile-glow"></div>
+                            <div class="profile-spin"></div>
+                            <img src="./assets/katleho-profile.png" alt="Katleho Myeza" class="profile-image">
+                        </div>
 
-        <p><strong>BBD Vacation Week — BBD Software Technologies</strong></p>
-        <p><em>Jul 2024</em></p>
-        <ul>
-            <li>Built a multiplayer game with fellow bursars using WebSockets and vanilla HTML, CSS and JavaScript.</li>
-        </ul>
+                        <!-- Orbiting elements -->
+                        <div class="orbit-container">
+                            <div class="orbit-dot orbit-dot-1"></div>
+                            <div class="orbit-dot orbit-dot-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2 id="volunteering">Volunteering:</h2>
-        <p><strong>Volunteer Coding Tutor — Ikusasa Lethu Learning Foundation</strong></p>
-        <p><em>July 2024 – September 2024</em></p>
-        <ul>
-            <li>Taught JavaScript fundamentals to underprivileged Grade 11 students, coding alongside them to spark interest in tech.</li>
-            <li>Guided students through coding problems to build confidence and problem-solving skills.</li>
-        </ul>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="about-paragraph">
+                        I am a Computer Science graduate with hands-on experience as a Junior Software Engineer. I have worked
+                        in a team of developers on client projects while completing a graduate program, where I built strong
+                        technical and professional skills.
+                    </p>
+                    <p class="about-paragraph">
+                        I have experience designing and developing sustainable, scalable systems and I am a results-oriented,
+                        adaptable and collaborative team player. I thrive in learning quickly and applying my knowledge to solve
+                        real-world challenges effectively.
+                    </p>
+                    <div class="skills-badges">
+                        <div class="badge-row">
+                            <span class="badge">Problem Solving</span>
+                            <span class="badge">Collaboration</span>
+                        </div>
+                        <div class="badge-row">
+                            <span class="badge">Mentorship</span>
+                            <span class="badge">Public Speaking</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Education</h3>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="education-school">University of Witwatersrand</h4>
+                        <p class="education-degree">Bachelor of Science in Computer Science</p>
+                        <div class="education-details">
+                            <p>• Machine Learning & AI</p>
+                            <p>• Operating Systems & Networks</p>
+                            <p>• Algorithms & Complexity</p>
+                            <p>• Software Design Principles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2 id="skills">Technical Skills:</h2>
-        <ul>
-            <li><strong>Languages & Frameworks:</strong> JavaScript, TypeScript, Angular/Angular Material, React, CSS, HTML, Node.js/Express</li>
-            <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB, Tinkerpop Gremlin</li>
-            <li><strong>DevOps & Tools:</strong> Docker, Git, Flyway, Swagger/YAML Documentation, Nx/Npm</li>
-            <li><strong>Soft Skills:</strong> Problem-Solving, Collaboration, Presentations, Mentorship, Public Speaking</li>
-        </ul>
-    </main>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-category="Frontend">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">JavaScript</h3>
+                    <p class="skill-category">Frontend</p>
+                </div>
+                <div class="skill-card" data-category="Frontend">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">TypeScript</h3>
+                    <p class="skill-category">Frontend</p>
+                </div>
+                <div class="skill-card" data-category="Frontend">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">React</h3>
+                    <p class="skill-category">Frontend</p>
+                </div>
+                <div class="skill-card" data-category="Frontend">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Angular</h3>
+                    <p class="skill-category">Frontend</p>
+                </div>
+                <div class="skill-card" data-category="Backend">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Node.js</h3>
+                    <p class="skill-category">Backend</p>
+                </div>
+                <div class="skill-card" data-category="Backend">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Express.js</h3>
+                    <p class="skill-category">Backend</p>
+                </div>
+                <div class="skill-card" data-category="Database">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">MySQL</h3>
+                    <p class="skill-category">Database</p>
+                </div>
+                <div class="skill-card" data-category="Database">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">PostgreSQL</h3>
+                    <p class="skill-category">Database</p>
+                </div>
+                <div class="skill-card" data-category="Database">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">MongoDB</h3>
+                    <p class="skill-category">Database</p>
+                </div>
+                <div class="skill-card" data-category="DevOps">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Docker</h3>
+                    <p class="skill-category">DevOps</p>
+                </div>
+                <div class="skill-card" data-category="Cloud">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">AWS</h3>
+                    <p class="skill-category">Cloud</p>
+                </div>
+                <div class="skill-card" data-category="Mobile">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Flutter</h3>
+                    <p class="skill-category">Mobile</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-list">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-info">
+                            <h3 class="experience-title">Junior Software Engineer</h3>
+                            <p class="experience-company">BBD Software Technologies</p>
+                        </div>
+                        <div class="experience-badges">
+                            <span class="experience-period">Jan 2025 – Present</span>
+                            <span class="experience-type">Contract</span>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <p>Working on "The Hive" skills management platform while completing graduate program. Gained experience with full-stack development, AWS infrastructure, CI/CD pipelines, and agile methodologies.</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-info">
+                            <h3 class="experience-title">Vacation Worker</h3>
+                            <p class="experience-company">Synthesis Software Technologies</p>
+                        </div>
+                        <div class="experience-badges">
+                            <span class="experience-period">Dec 2023 – Jan 2024</span>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <p>Built a social media e-commerce site with Flutter, Express.js, and MongoDB.</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-info">
+                            <h3 class="experience-title">Volunteer Coding Tutor</h3>
+                            <p class="experience-company">Ikusasa Lethu Learning Foundation</p>
+                        </div>
+                        <div class="experience-badges">
+                            <span class="experience-period">July 2024 – September 2024</span>
+                        </div>
+                    </div>
+                    <div class="experience-content">
+                        <p>Taught JavaScript fundamentals to underprivileged Grade 11 students, building their confidence and problem-solving skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="contact-heading">Let's Connect</h3>
+                    <p class="contact-text">
+                        I'm always interested in new opportunities and collaborations. Whether you have a project in mind or
+                        just want to chat about technology, feel free to reach out!
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>066 231 5719</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>ksjmyeza@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Johannesburg, Gauteng</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Send a Message</h3>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <input type="text" placeholder="First Name" class="form-input">
+                            <input type="text" placeholder="Last Name" class="form-input">
+                        </div>
+                        <input type="email" placeholder="Email Address" class="form-input">
+                        <input type="text" placeholder="Subject" class="form-input">
+                        <textarea placeholder="Your message..." rows="4" class="form-textarea"></textarea>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">© 2025 Katleho Myeza. Crafted with passion and code.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="mailto:ksjmyeza@gmail.com" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
