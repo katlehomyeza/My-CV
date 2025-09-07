@@ -15,6 +15,7 @@ To keep the repository clean and organized, please follow these branch naming co
 Prefix	Purpose
 update/	For updating existing content (e.g., text, images, styles, copy changes)
 feat/	For adding a new feature to the website
+enhancement/ for bolstering the website
 fix/	For bug fixes or correcting broken features
 docs/	For documentation changes (README, comments, guides)
 refactor/	For restructuring code without changing its functionality
