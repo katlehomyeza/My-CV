@@ -102,48 +102,72 @@ function updateActiveNavLink() {
 
 window.addEventListener("scroll", updateActiveNavLink)
 
-// Form submission
-const contactForm = document.querySelector(".contact-form")
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+const contactForm = document.querySelector(".contact-form");
 
-    // Get form data
-    const formData = new FormData(contactForm)
-    const data = Object.fromEntries(formData)
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData);
+    console.log(data);
 
     // Simple validation
-    const inputs = contactForm.querySelectorAll("input, textarea")
-    let isValid = true
-
-    inputs.forEach((input) => {
-      if (input.hasAttribute("required") && !input.value.trim()) {
-        isValid = false
-        input.style.borderColor = "#ef4444"
+    let isValid = true;
+    contactForm.querySelectorAll("input, textarea").forEach(input => {
+      if (!input.value.trim()) {
+        isValid = false;
+        input.style.borderColor = "#ef4444";
       } else {
-        input.style.borderColor = ""
+        input.style.borderColor = "";
       }
-    })
+    });
 
-    if (isValid) {
-      // Simulate form submission
-      const submitBtn = contactForm.querySelector('button[type="submit"]')
-      const originalText = submitBtn.textContent
+    if (!isValid) return;
 
-      submitBtn.textContent = "Sending..."
-      submitBtn.disabled = true
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
 
-      setTimeout(() => {
-        submitBtn.textContent = "Message Sent!"
-        setTimeout(() => {
-          submitBtn.textContent = originalText
-          submitBtn.disabled = false
-          contactForm.reset()
-        }, 2000)
-      }, 1000)
+    try {
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+
+
+      // Send data to backend
+      const response = await fetch("https://my-cv-iqsl.vercel.app/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: data['first_name'],
+          last_name: data['last_name'],
+          email: data['email'],
+          subject: data['subject'],
+          message: data['message'],
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        submitBtn.textContent = "Message Sent!";
+        contactForm.reset();
+      } else {
+        submitBtn.textContent = "Error, try again!";
+        console.error(result.error);
+      }
+
+    } catch (err) {
+      console.error(err);
+      submitBtn.textContent = "Error, try again!";
     }
-  })
+
+    setTimeout(() => {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }, 2000);
+  });
 }
+
 
 // Add staggered animation delays to skill cards
 const skillCards = document.querySelectorAll(".skill-card")

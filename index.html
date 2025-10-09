@@ -426,12 +426,12 @@
                     </div>
                     <form class="contact-form">
                         <div class="form-row">
-                            <input type="text" placeholder="First Name" class="form-input">
-                            <input type="text" placeholder="Last Name" class="form-input">
+                            <input type="text" name="first_name" placeholder="First Name" class="form-input" required>
+                            <input type="text" name="last_name" placeholder="Last Name" class="form-input" required>
                         </div>
-                        <input type="email" placeholder="Email Address" class="form-input">
-                        <input type="text" placeholder="Subject" class="form-input">
-                        <textarea placeholder="Your message..." rows="4" class="form-textarea"></textarea>
+                        <input type="email" name="email" placeholder="Email Address" class="form-input" required>
+                        <input type="text" name="subject" placeholder="Subject" class="form-input">
+                        <textarea name="message" placeholder="Your message..." rows="4" class="form-textarea" required></textarea>
                         <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                     </form>
                 </div>
