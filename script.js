@@ -55,7 +55,6 @@ function animateParticles() {
 
 animateParticles()
 
-// Navigation functionality
 const navLinks = document.querySelectorAll(".nav-link")
 const sections = document.querySelectorAll("section[id]")
 
@@ -81,20 +80,20 @@ navLinks.forEach((link) => {
 
 // Update active nav link on scroll
 function updateActiveNavLink() {
-  let current = ""
+  let currentNavigationLink = ""
 
   sections.forEach((section) => {
     const sectionTop = section.offsetTop
     const sectionHeight = section.clientHeight
 
     if (window.scrollY >= sectionTop - 200) {
-      current = section.getAttribute("id")
+      currentNavigationLink = section.getAttribute("id")
     }
   })
 
   navLinks.forEach((link) => {
     link.classList.remove("active")
-    if (link.getAttribute("href").substring(1) === current) {
+    if (link.getAttribute("href").substring(1) === currentNavigationLink) {
       link.classList.add("active")
     }
   })
@@ -104,84 +103,87 @@ window.addEventListener("scroll", updateActiveNavLink)
 
 const contactForm = document.querySelector(".contact-form");
 
-if (contactForm) {
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    console.log(data);
-
-    // Simple validation
-    let isValid = true;
-    contactForm.querySelectorAll("input, textarea").forEach(input => {
-      if (!input.value.trim()) {
-        isValid = false;
-        input.style.borderColor = "#ef4444";
-      } else {
-        input.style.borderColor = "";
-      }
-    });
-
-    if (!isValid) return;
-
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-
-    try {
-      submitBtn.textContent = "Sending...";
-      submitBtn.disabled = true;
-
-
-      // Send data to backend
-      const response = await fetch("https://my-cv-iqsl.vercel.app/api/email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          first_name: data['first_name'],
-          last_name: data['last_name'],
-          email: data['email'],
-          subject: data['subject'],
-          message: data['message'],
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        submitBtn.textContent = "Message Sent!";
-        contactForm.reset();
-      } else {
-        submitBtn.textContent = "Error, try again!";
-        console.error(result.error);
-      }
-
-    } catch (err) {
-      console.error(err);
-      submitBtn.textContent = "Error, try again!";
+function validateFormInputs(form) {
+  let allFieldsValid = true;
+  const inputElements = form.querySelectorAll("input, textarea");
+  
+  inputElements.forEach(inputElement => {
+    const hasValue = inputElement.value.trim().length > 0;
+    
+    if (!hasValue) {
+      allFieldsValid = false;
+      inputElement.style.borderColor = "#ef4444";
+    } else {
+      inputElement.style.borderColor = "";
     }
+  });
+  
+  return allFieldsValid;
+}
 
-    setTimeout(() => {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }, 2000);
+function extractFormData(form) {
+  const formData = new FormData(form);
+  return Object.fromEntries(formData);
+}
+
+function setSubmitButtonState(button, text, isDisabled) {
+  button.textContent = text;
+  button.disabled = isDisabled;
+}
+
+async function sendContactFormEmail(contactData) {
+  const response = await fetch("https://my-cv-iqsl.vercel.app/api/email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      first_name: contactData['first_name'],
+      last_name: contactData['last_name'],
+      email: contactData['email'],
+      subject: contactData['subject'],
+      message: contactData['message'],
+    }),
+  });
+  
+  return await response.json();
+}
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const contactData = extractFormData(contactForm);
+    const isFormValid = validateFormInputs(contactForm);
+    
+    if (isFormValid) {
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+
+      try {
+        setSubmitButtonState(submitButton, "Sending...", true);
+        await sendContactFormEmail(contactData);
+        setSubmitButtonState(submitButton, "Message Sent!", true);
+        contactForm.reset();
+      } catch (error) {
+        console.error(error);
+        setSubmitButtonState(submitButton, "Error, try again!", true);
+      }
+
+      setTimeout(() => {
+        setSubmitButtonState(submitButton, originalButtonText, false);
+      }, 2000);
+    }
   });
 }
 
-
-// Add staggered animation delays to skill cards
 const skillCards = document.querySelectorAll(".skill-card")
 skillCards.forEach((card, index) => {
   card.style.setProperty("--i", index)
 })
 
-// Add staggered animation delays to experience cards
 const experienceCards = document.querySelectorAll(".experience-card")
 experienceCards.forEach((card, index) => {
   card.style.setProperty("--i", index)
 })
 
-// Intersection Observer for animations
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -50px 0px",
