@@ -97,6 +97,11 @@ body {
   overflow-x: hidden;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Canvas for particles */
 #particleCanvas {
   position: fixed;
@@ -686,13 +691,15 @@ body {
 }
 
 /* Experience Section */
-.experience-list {
+.experience-list,
+.project-list {
   display: flex;
   flex-direction: column;
   gap: var(--gap-lg);
 }
 
-.experience-card {
+.experience-card, 
+.project-card {
   background: linear-gradient(135deg, var(--card), oklch(0.15 0.06 280));
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -711,14 +718,16 @@ body {
   animation-delay: calc(0.2s * var(--i, 0));
 }
 
-.experience-header {
+.experience-header,
+.project-header {
   display: flex;
   flex-direction: column;
   gap: var(--gap-md);
   margin-block-end: var(--space-lg);
 }
 
-.experience-title {
+.experience-title,
+.project-title {
   font-family: var(--font-space-grotesk);
   font-weight: 600;
   font-size: var(--text-xl);
@@ -728,12 +737,14 @@ body {
   background-clip: text;
 }
 
-.experience-company {
+.experience-company,
+.project-slogan {
   color: var(--primary);
   font-weight: 500;
 }
 
-.experience-badges {
+.experience-badges,
+.project-stack {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -750,7 +761,8 @@ body {
   animation: pulse-border 2s ease-in-out infinite;
 }
 
-.experience-type {
+.experience-type,
+.project-type{
   padding-block: var(--space-xs);
   padding-inline: var(--space-md);
   background: var(--secondary);
@@ -760,7 +772,8 @@ body {
   animation: glow 2s ease-in-out infinite;
 }
 
-.experience-content {
+.experience-content,
+.project-content {
   line-height: 1.6;
 }
 
